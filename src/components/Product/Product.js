@@ -5,13 +5,14 @@ import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import './Product.css';
 
 const Product = (props) => {
-    console.log(props.product)
+   
     const { img, name, seller, price, stock  } = props.product;
     return (
         <div className='product'>
 
             <div className="img-container">
                 <img src={img} alt="" />
+
             </div>
 
             <div className="details-container">
@@ -19,7 +20,12 @@ const Product = (props) => {
                 <p><small> by: {seller}</small></p>             
                 <p> ${price}</p>               
                 <p><small> only {stock} left in stock - order soon</small></p>
-                <button className="buttons"> <FontAwesomeIcon icon={faCartArrowDown} /> add to cart </button>
+                <button 
+                className="buttons"
+                onClick={()=> props.handelAddProduct(props.product)}
+                > 
+                    <FontAwesomeIcon icon={faCartArrowDown} /> add to cart 
+                </button>
             </div>
 
         </div>

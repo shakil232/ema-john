@@ -20,6 +20,7 @@
     height: 30px;
     border: 1px solid orange;
     border-radius: 7px;
+    cursor: pointer;
 }
 .buttons:hover{
     color: white;
