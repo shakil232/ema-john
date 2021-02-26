@@ -1,6 +1,7 @@
 
 .header {
-   text-align: center;         
+   text-align: center; 
+   margin-top: 15px;        
 }
 .header img {
     width: 20%;
@@ -18,6 +19,6 @@ nav a {
     transition: 1s;
 }
 nav a:hover {
-    background-color: gray;
+    background-color: grey;
     color: tomato;
 }
