@@ -1,5 +1,6 @@
 
 import React from 'react';
+import './Cart.css';
 
 const Cart = (props) => {
     const cart = props.cart
@@ -30,13 +31,14 @@ const Cart = (props) => {
        return Number(precision)
    }
     return (
-        <div>
-            <h3> Order Summary </h3>
-            <h5> Items Order: {cart.length} </h5>
+        <div className="cart-container">
+            <h3 className="summary"> Order Summary </h3>
+            <h5 className="total-items"> Items Order: {cart.length} </h5>
             <p> product price: ${formatNumber(total)}</p>
             <p> Shipping cost: ${formatNumber(shipping )} </p>
             <p> Tex +Vat : ${formatNumber(tax)}</p>
-            <p>Total Price: ${GrandTotal}</p>
+            <p className='grand-total'> Order Total : ${GrandTotal}</p>
+            <button className="buttons"> Review your order</button>
         </div>
     );
 };
