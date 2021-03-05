@@ -1,6 +1,10 @@
 
 .cart-container{
   text-align: center;
+  text-decoration: justify;
+}
+.order-summary{
+    border-bottom: 2px solid red;
 }
 .summary{
     color: orangered;

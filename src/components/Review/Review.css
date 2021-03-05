@@ -1,0 +1,10 @@
+
+.review-container {
+    display: flex;
+}
+.item-container {
+    width: 65%;
+    margin-left: 100px;
+    margin-right: 10px;
+    border-right: 1px solid lightgrey;
+}

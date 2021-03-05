@@ -1,46 +1,58 @@
 
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import './Cart.css';
+import { Link } from 'react-router-dom';
+
 
 const Cart = (props) => {
-    const cart = props.cart
-    const total = cart.reduce((total ,prd ) => total +prd.price , 0)
-    
-    // let total = 0 ;
-    // for (let i = 0; i < cart.length; i++) {
-    //     const product = cart[i];
-    //     total = total + product.price;
-    // }
+  const cart = props.cart
+  // const total = cart.reduce((total, prd) => 
+  // { return total + prd.price *product.quantity } , 0)
+
+  let total = 0 ;
+  for (let i = 0; i < cart.length; i++) {
+      const product = cart[i];
+      total = total + product.price * product.quantity  ;
+  }
 
   let shipping = 0;
-  if (total >35 ) {
+  if (total > 35) {
     shipping = 0;
   }
-  else if (total >15) {
-    shipping  = 4.99;
+  else if (total > 15) {
+    shipping = 4.99;
   }
-  else if (total  >0) {
+  else if (total > 0) {
     shipping = 12.99;
   }
 
-   const tax = total /10;
-   const GrandTotal =  (total + shipping + (tax)).toFixed(2);
+  const tax = total / 10;
+  const GrandTotal = (total + shipping + (tax)).toFixed(2);
 
-   const formatNumber = num =>{
-       const precision = num.toFixed(2);
-       return Number(precision)
-   }
-    return (
-        <div className="cart-container">
-            <h3 className="summary"> Order Summary </h3>
-            <h5 className="total-items"> Items Order: {cart.length} </h5>
-            <p> product price: ${formatNumber(total)}</p>
-            <p> Shipping cost: ${formatNumber(shipping )} </p>
-            <p> Tex +Vat : ${formatNumber(tax)}</p>
-            <p className='grand-total'> Order Total : ${GrandTotal}</p>
-            <button className="buttons"> Review your order</button>
-        </div>
-    );
+  const formatNumber = num => {
+    const precision = num.toFixed(2);
+    return Number(precision)
+  }
+  return (
+    <div className="cart-container">
+      <div className="order-summary">
+        <h3 className="summary"> Order Summary </h3>
+        <h5 className="total-items"> Items Order: {cart.length} </h5>
+        <p> product price: ${formatNumber(total)}</p>
+        <p> Shipping cost: ${formatNumber(shipping)} </p>
+        <p> Tex +Vat : ${formatNumber(tax)}</p>
+      </div>
+
+      <div>
+        <p className='grand-total'> Order Total : ${GrandTotal}</p>
+        <Link to="/review"> 
+        <button className="buttons"> <FontAwesomeIcon icon={faCartArrowDown} /> Review your order </button>
+        </Link>
+      </div>
+    </div>
+  );
 };
 
 export default Cart;
